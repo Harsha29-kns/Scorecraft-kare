@@ -2,11 +2,11 @@ import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { FiCheckCircle, FiArrowLeft } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
-import './RegistrationSuccess.css'; // We'll create this new CSS file
+import './RegistrationSuccess.css';
 
 const RegistrationSuccess = () => {
   const location = useLocation();
-  const { event } = location.state || {}; // Get event data passed from the registration page
+  const { event } = location.state || {}; 
 
   return (
     <div className="registration-success-container">

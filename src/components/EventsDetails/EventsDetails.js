@@ -44,12 +44,12 @@ const EventsDetails = ({ event }) => {
   useEffect(() => {
     if (!event || !event.id) return;
 
-    // ✅ FIXED: Using the correct listener function name
+    
     const unsubscribe = registrations.listenVerifiedByEventId(event.id, (verifiedRegs) => {
       setVerifiedCount(verifiedRegs.length);
     });
 
-    // Cleanup listener on component unmount
+    
     return () => unsubscribe();
   }, [event]);
 

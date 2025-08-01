@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { coreMembers as coreMembersAPI } from '../../services/firebase'; // Corrected: Import from firebase
+import { coreMembers as coreMembersAPI } from '../../services/firebase'; 
 import './CoreMembers.css';
 import CoreTeamDetails from '../CoreTeamDetails/CoreTeamDetails';
 

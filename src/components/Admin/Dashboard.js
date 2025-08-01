@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// Import the components to be displayed
+
 import ManageCoreTeam from './ManageCoreTeam';
 import ManageEvents from './ManageEvents';
 import ManageMentors from './ManageMentors';
 
-// Import icons for the navigation
+
 import { FiUsers, FiAward, FiCalendar, FiLogOut, FiGrid } from 'react-icons/fi';
 
-// Import the specific CSS for the dashboard layout
+
 import './Dashboard.css';
 
-// Define navigation items in an array for scalability
+
 const navItems = [
   { id: 'team', label: 'Manage Core Team', icon: <FiUsers />, component: <ManageCoreTeam /> },
   { id: 'mentors', label: 'Manage Mentors', icon: <FiAward />, component: <ManageMentors /> },
@@ -24,8 +24,8 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Your Firebase logout logic would go here
-    // For example: auth.signOut().then(() => navigate('/admin'));
+    
+    //  auth.signOut().then(() => navigate('/admin'));
     console.log("Logging out...");
     navigate('/admin'); // Redirect to login page after logout
   };

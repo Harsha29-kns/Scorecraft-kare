@@ -4,7 +4,7 @@ import { events, registrations, imageUploader } from '../../services/firebase';
 import { FiUser, FiMail, FiHash, FiPhone, FiBriefcase, FiCalendar, FiUsers, FiUploadCloud, FiCreditCard } from 'react-icons/fi';
 import './EventRegistration.css';
 
-// Helper to create an empty member object
+
 const createEmptyMember = () => ({
   name: '',
   regNo: '',

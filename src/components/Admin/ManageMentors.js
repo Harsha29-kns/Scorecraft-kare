@@ -71,7 +71,7 @@ const ManageMentors = () => {
   };
 
   const handleDelete = async (id) => {
-    // Using a custom modal/dialog is better than window.confirm, but this works for now
+    
     if (window.confirm("Are you sure you want to delete this mentor?")) {
       try {
         await mentors.delete(id);

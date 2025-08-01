@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { adminAuth } from '../../services/firebase'; // Corrected: Import from firebase
+import { adminAuth } from '../../services/firebase'; 
 import './Admin.css';
 
 function Admin({ setIsLoggedIn }) {
-  const [email, setEmail] = useState(''); // Changed: Use email for Firebase
+  const [email, setEmail] = useState(''); 
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const navigate = useNavigate(); // Added for navigation after login
+  const navigate = useNavigate(); 
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      await adminAuth.login(email, password); // Corrected: Use Firebase auth
+      await adminAuth.login(email, password); 
       setMessage('Login successful');
       setIsLoggedIn(true);
-      navigate('/dashboard'); // Added: Redirect to a protected route
+      navigate('/dashboard'); 
     } catch (error) {
       console.error('Login error:', error);
-      setMessage('Login failed. Please check your credentials.'); // Updated error message
+      setMessage('Login failed. Please check your credentials.'); 
     }
   };
 

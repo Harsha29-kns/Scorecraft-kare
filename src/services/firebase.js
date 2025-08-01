@@ -43,14 +43,14 @@ export const imageUploader = {
   },
 };
 
-// --- GENERIC FIRESTORE HELPER ---
+
 const getAllFromCollection = async (collectionName) => {
-  const q = query(collection(db, collectionName), orderBy('title', 'asc')); // Assuming you want to order by title
+  const q = query(collection(db, collectionName), orderBy('name', 'asc')); // Assuming you want to order by title
   const querySnapshot = await getDocs(q);
   return querySnapshot.docs.map(d => ({ id: d.id, ...d.data() }));
 };
 
-// --- API MODULES ---
+
 
 export const coreTeam = {
   getAll: () => getAllFromCollection('core_team'),
@@ -86,7 +86,7 @@ export const events = {
 export const registrations = {
     create: (data) => addDoc(collection(db, 'registrations'), data),
     
-    // ✅ RENAMED: For real-time updates (e.g., in the admin panel's modal)
+    
     listenByEventId: (eventId, callback) => {
       const q = query(collection(db, 'registrations'), where('eventId', '==', eventId));
       const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -96,7 +96,7 @@ export const registrations = {
       return unsubscribe;
     },
 
-    // ✅ RENAMED & FIXED: For real-time updates of only verified registrations
+    
     listenVerifiedByEventId: (eventId, callback) => {
       const q = query(collection(db, 'registrations'), where('eventId', '==', eventId), where('verified', '==', true));
       const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -106,7 +106,7 @@ export const registrations = {
       return unsubscribe;
     },
     
-    // ✅ NEW: For one-time fetching of verified registrations (for admin panel counts)
+    
     getVerifiedByEventIdOnce: async (eventId) => {
         const q = query(collection(db, 'registrations'), where('eventId', '==', eventId), where('verified', '==', true));
         const querySnapshot = await getDocs(q);
@@ -115,7 +115,7 @@ export const registrations = {
 
     verify: (id) => updateDoc(doc(db, 'registrations', id), { verified: true }),
     
-    // ✅ NEW: Added missing function
+    
     updateEmailStatus: (id, status) => updateDoc(doc(db, 'registrations', id), { emailStatus: status }),
 };
 

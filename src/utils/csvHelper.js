@@ -6,7 +6,7 @@ export const downloadCSV = (data) => {
 
   const headers = Object.keys(data[0]);
   const csvRows = [
-    headers.join(','), // Header row
+    headers.join(','), 
     ...data.map(row => 
       headers.map(fieldName => 
         JSON.stringify(row[fieldName], (key, value) => value === null ? '' : value)

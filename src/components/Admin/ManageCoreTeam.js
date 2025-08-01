@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-// Import services
+
 import { coreTeam, imageUploader } from '../../services/firebase';
-// Import icons for a cleaner UI
+
 import { FiUser, FiBriefcase, FiLinkedin, FiUploadCloud, FiEdit, FiTrash2, FiPlus, FiSave } from 'react-icons/fi';
-// Import the component's CSS
+
 import './ManageCoreTeam.css';
 
 const ManageCoreTeam = () => {
@@ -33,7 +33,7 @@ const ManageCoreTeam = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.role) return; // Basic validation
+    if (!formData.name || !formData.role) return; 
     
     setLoading(true);
     let imageUrl = formData.imageUrl;
@@ -52,7 +52,7 @@ const ManageCoreTeam = () => {
       }
     } catch (error) {
       console.error("Failed to save member:", error);
-      // You could add a user-facing error state here
+      
     }
 
     resetForm();
@@ -84,7 +84,7 @@ const ManageCoreTeam = () => {
     setFormData({ name: '', role: '', linkedin: '', imageUrl: '' });
     setImageFile(null);
     setImagePreview(null);
-    // This is important to clear the file input's value
+    
     if(document.getElementById('file-input')) {
       document.getElementById('file-input').value = "";
     }
