@@ -13,31 +13,50 @@ import Dashboard from './components/Admin/Dashboard';
 import { adminAuth } from './services/firebase';
 import EventRegistration from './components/Events/EventRegistration';
 import RegistrationSuccess from './components/Events/RegistrationSuccess';
+import Loading from './components/Loading/Loading'; // Import the new component
 
+// Create a simple event emitter to control the loading state
+export const loadingIndicator = {
+  show: () => window.dispatchEvent(new Event('show-loading')),
+  hide: () => window.dispatchEvent(new Event('hide-loading')),
+};
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [checking, setChecking] = useState(true);
+  const [isLoading, setIsLoading] = useState(true); // Start with loading true
 
   useEffect(() => {
+    const showLoader = () => setIsLoading(true);
+    const hideLoader = () => setIsLoading(false);
+
+    window.addEventListener('show-loading', showLoader);
+    window.addEventListener('hide-loading', hideLoader);
+
     const unsubscribe = adminAuth.onAuthChange(user => {
       setIsLoggedIn(!!user);
       setChecking(false);
+      setIsLoading(false); // Hide loader after auth check
     });
-    return () => unsubscribe();
+
+    return () => {
+      window.removeEventListener('show-loading', showLoader);
+      window.removeEventListener('hide-loading', hideLoader);
+      unsubscribe();
+    };
   }, []);
 
+  if (checking) {
+    return <Loading />; // Show loader while checking auth
+  }
+
   const ProtectedRoute = ({ children }) => {
-    if (checking) return <div>Loading...</div>;
     return isLoggedIn ? children : <Navigate to="/admin-login" replace />;
   };
 
-  if (checking) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <Router>
+      {isLoading && <Loading />}
       <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Routes>
         {/* Public Routes */}
@@ -50,7 +69,6 @@ function App() {
         <Route path="/register/:eventId" element={<EventRegistration />} />
         <Route path="/registration-success" element={<RegistrationSuccess />} />
         
-        <Route path="/" element={<Home />} />
         {/* Admin Routes */}
         <Route path="/admin-login" element={<AdminLogin setIsLoggedIn={setIsLoggedIn} />} />
         <Route 

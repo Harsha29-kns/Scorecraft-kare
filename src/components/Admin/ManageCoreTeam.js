@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
 import { coreTeam, imageUploader } from '../../services/firebase';
-
 import { FiUser, FiBriefcase, FiLinkedin, FiUploadCloud, FiEdit, FiTrash2, FiPlus, FiSave } from 'react-icons/fi';
-
 import './ManageCoreTeam.css';
 
 const ManageCoreTeam = () => {
@@ -19,8 +16,15 @@ const ManageCoreTeam = () => {
   }, []);
 
   const fetchMembers = async () => {
-    const data = await coreTeam.getAll();
-    setMembers(data);
+    setLoading(true); // Show loading state while fetching
+    try {
+      const data = await coreTeam.getAll();
+      setMembers(data);
+    } catch (error) {
+      console.error("Failed to fetch members:", error);
+    } finally {
+      setLoading(false); // Hide loading state
+    }
   };
 
   const handleFileChange = (e) => {
@@ -52,16 +56,15 @@ const ManageCoreTeam = () => {
       }
     } catch (error) {
       console.error("Failed to save member:", error);
-      
     }
 
     resetForm();
-    fetchMembers();
+    await fetchMembers(); // Use await to ensure data is fetched before hiding loader
     setLoading(false);
   };
 
   const handleEdit = (member) => {
-    window.scrollTo(0, 0); // Scroll to the top to see the form
+    window.scrollTo(0, 0);
     setIsEditing(member.id);
     setFormData({ name: member.name, role: member.role, linkedin: member.linkedin, imageUrl: member.imageUrl });
     setImagePreview(member.imageUrl);
@@ -70,11 +73,14 @@ const ManageCoreTeam = () => {
 
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this member?")) {
+      setLoading(true);
       try {
         await coreTeam.delete(id);
-        fetchMembers();
+        await fetchMembers();
       } catch (error) {
         console.error("Failed to delete member:", error);
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -155,7 +161,12 @@ const ManageCoreTeam = () => {
         <div className="member-grid">
           {members.map(member => (
             <div key={member.id} className="member-card">
-              <img src={member.imageUrl || 'https://via.placeholder.com/150'} alt={member.name} className="member-photo" />
+              <img 
+                src={member.imageUrl || 'https://placehold.co/150x150/E0F7FF/0B7994?text=Member'} 
+                alt={member.name} 
+                className="member-photo" 
+                onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150x150/E0F7FF/0B7994?text=Error'; }}
+              />
               <div className="member-info">
                 <h4>{member.name}</h4>
                 <p>{member.role}</p>

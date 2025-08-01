@@ -19,8 +19,15 @@ const ManageMentors = () => {
   }, []);
 
   const fetchMentors = async () => {
-    const data = await mentors.getAll();
-    setMentorList(data);
+    setLoading(true); // Show loading state
+    try {
+      const data = await mentors.getAll();
+      setMentorList(data);
+    } catch (error) {
+      console.error("Failed to fetch mentors:", error);
+    } finally {
+      setLoading(false); // Hide loading state
+    }
   };
 
   const handleFileChange = (e) => {
@@ -58,7 +65,7 @@ const ManageMentors = () => {
     }
 
     resetForm();
-    fetchMentors();
+    await fetchMentors(); // Await to ensure data is fresh
     setLoading(false);
   };
 
@@ -71,13 +78,15 @@ const ManageMentors = () => {
   };
 
   const handleDelete = async (id) => {
-    
     if (window.confirm("Are you sure you want to delete this mentor?")) {
+      setLoading(true);
       try {
         await mentors.delete(id);
-        fetchMentors();
+        await fetchMentors();
       } catch (error) {
         console.error("Failed to delete mentor:", error);
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -159,7 +168,12 @@ const ManageMentors = () => {
         <div className="mentor-grid">
           {mentorList.map(mentor => (
             <div key={mentor.id} className="mentor-card">
-              <img src={mentor.imageUrl || 'https://placehold.co/150x150/E0F7FF/0B7994?text=Mentor'} alt={mentor.name} className="mentor-photo" />
+              <img 
+                src={mentor.imageUrl || 'https://placehold.co/150x150/E0F7FF/0B7994?text=Mentor'} 
+                alt={mentor.name} 
+                className="mentor-photo"
+                onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150x150/E0F7FF/0B7994?text=Error'; }}
+              />
               <div className="mentor-info">
                 <h4>{mentor.name}</h4>
                 <p>{mentor.role}</p>
