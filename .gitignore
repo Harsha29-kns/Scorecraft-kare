@@ -44,7 +44,7 @@ coverage/
 
 # Vercel
 .vercel/
-vercel.json
+
 
 # React specific
 *.log
