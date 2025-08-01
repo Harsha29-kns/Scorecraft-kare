@@ -13,7 +13,7 @@ import Dashboard from './components/Admin/Dashboard';
 import { adminAuth } from './services/firebase';
 import EventRegistration from './components/Events/EventRegistration';
 import RegistrationSuccess from './components/Events/RegistrationSuccess';
-import Test from './components/Test/Test';
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -49,7 +49,7 @@ function App() {
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/register/:eventId" element={<EventRegistration />} />
         <Route path="/registration-success" element={<RegistrationSuccess />} />
-        <Route path="/test-env" element={<Test />} />
+        
         <Route path="/" element={<Home />} />
         {/* Admin Routes */}
         <Route path="/admin-login" element={<AdminLogin setIsLoggedIn={setIsLoggedIn} />} />
