@@ -1,27 +1,69 @@
 import React from 'react';
-import Headers from '../Header/Header';
+import { Link } from 'react-router-dom';
+import { FaGg as FaGate, FaCode, FaTrophy, FaChalkboardTeacher } from 'react-icons/fa';
 import './Home.css';
-
 
 function Home() {
   return (
-   <>
-  
-   <div className="home">
-      <div className="hero">
-        <div className="hero-content">
-          <div className="hero-text">
-            <h1>Welcome to ScoreCraft</h1>
-            <p>ScoreCraft is your gateway to the world of music and technology. Join us as we explore the latest in musical innovation and creativity. Our chapter is dedicated to fostering a community of passionate individuals who are eager to learn and grow. Whether you're a musician, a tech enthusiast, or just curious, there's a place for you here. Dive into our events, meet our core team, and become a part of something extraordinary.</p>
-            <button href="/events">Events</button>
+    <>
+      <div className="home-container">
+        {/* --- Hero Section --- */}
+        <section className="hero-section">
+          <div className="hero-content">
+            <div className="hero-text">
+              <h1 className="hero-title">Welcome to ScoreCraft</h1>
+              <p className="hero-subtitle">
+                ScoreCraft is your dedicated platform for GATE preparation, mastering hackathons, and excelling in technical exams. Join our community to build skills and achieve your goals.
+              </p>
+              <Link to="/events" className="hero-button">View Upcoming Events</Link>
+            </div>
+            <div className="hero-image">
+              <img src="https://res.cloudinary.com/dbroxheos/image/upload/v1741861300/DALL_E_2025-03-13_15.49.04_-_A_modern_sleek_logo_for_GATE_Preparation_._The_design_should_be_professional_and_academic_incorporating_elements_like_a_graduation_cap_books_or_a_wb2rzb.webp" alt="ScoreCraft Community" />
+            </div>
           </div>
-          <div className="hero-image">
-            <img src="https://res.cloudinary.com/dbroxheos/image/upload/v1741861300/DALL_E_2025-03-13_15.49.04_-_A_modern_sleek_logo_for_GATE_Preparation_._The_design_should_be_professional_and_academic_incorporating_elements_like_a_graduation_cap_books_or_a_wb2rzb.webp" alt="AI Generated" />
+        </section>
+
+        {/* --- What We Offer Section --- */}
+        <section className="offer-section">
+          <div className="offer-content">
+            <h2 className="section-title">What We Offer</h2>
+            <div className="offer-cards">
+              <div className="offer-card">
+                <FaGate className="offer-icon" />
+                <h3 className="offer-card-title">GATE Preparation</h3>
+                <p>Structured guidance and resources to help you ace the GATE exam.</p>
+              </div>
+              <div className="offer-card">
+                <FaCode className="offer-icon" />
+                <h3 className="offer-card-title">Hackathon Training</h3>
+                <p>From ideation to execution, we prepare you to win competitive hackathons.</p>
+              </div>
+              <div className="offer-card">
+                <FaTrophy className="offer-icon" />
+                <h3 className="offer-card-title">Competitive Exams</h3>
+                <p>Sharpen your problem-solving skills for various technical and coding exams.</p>
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
+
+        {/* --- Meet Our Mentors Section --- */}
+        <section className="mentors-intro-section">
+          <div className="mentors-intro-content">
+            <FaChalkboardTeacher className="mentors-intro-icon" />
+            <h2 className="section-title">Guidance from Experts</h2>
+            <p className="mentors-intro-text">
+              Our experienced mentors are here to provide personalized guidance for your academic and career goals, helping you navigate the challenges of exams and competitions.
+            </p>
+            <Link to="/mentors" className="hero-button">Meet Our Mentors</Link>
+          </div>
+        </section>
       </div>
-    </div>
-   </>
+      <div className="footer">
+        <p>&copy; {new Date().getFullYear()} ScoreCraft. All rights reserved.</p>
+        <p>Follow us on <a href="https://www.linkedin.com/in/scorecraftkare/" target="_blank" rel="noopener noreferrer">LinkedIn</a> for updates.</p>
+      </div>
+    </>
   );
 }
 

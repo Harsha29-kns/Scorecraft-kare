@@ -49,13 +49,32 @@ const ManageEvents = () => {
     fetchEventsAndCounts();
   }, []);
 
+  // --- UPDATED useEffect to prevent duplicate registrations ---
   useEffect(() => {
-    let unsubscribe = () => {};
-    if (viewingRegistrationsFor) {
-      unsubscribe = registrations.listenByEventId(viewingRegistrationsFor, setRegistrationsList);
+    // If no event is selected to view, ensure the list is empty and do nothing further.
+    if (!viewingRegistrationsFor) {
+      setRegistrationsList([]);
+      return;
     }
-    return () => unsubscribe();
-  }, [viewingRegistrationsFor]);
+
+    // Set up the real-time listener.
+    // The `onSnapshot` function will provide the complete, up-to-date list of registrations
+    // every time there is a change in the database.
+    const unsubscribe = registrations.listenByEventId(
+      viewingRegistrationsFor, 
+      (updatedList) => {
+        // By setting the state with the new list, we replace the old one entirely.
+        setRegistrationsList(updatedList);
+      }
+    );
+
+    // This cleanup function is crucial. React runs it when the component
+    // unmounts or before the effect runs again due to a dependency change.
+    // This ensures we always remove the old listener before creating a new one.
+    return () => {
+      unsubscribe();
+    };
+  }, [viewingRegistrationsFor]); // The effect re-runs only when the selected event changes.
 
   const handleFileChange = e => {
     const file = e.target.files[0];
