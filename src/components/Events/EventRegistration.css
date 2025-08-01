@@ -1,0 +1,114 @@
+.registration-page {
+  max-width: 700px;
+  margin: 100px auto 50px;
+  background: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.event-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.event-description {
+  text-align: center;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-section {
+  padding: 1rem 0;
+  border-top: 1px solid #eee;
+}
+
+.form-section:first-child {
+  border-top: none;
+}
+
+.form-section h3 {
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.registration-form input[type="text"],
+.registration-form input[type="email"],
+.registration-form input[type="file"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+button[type="submit"] {
+  padding: 14px;
+  font-size: 1rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: #d9534f;
+  text-align: center;
+  font-weight: 500;
+}
+
+.qr-code-container {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.qr-code-image {
+  max-width: 200px;
+  height: auto;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  padding: 6px;
+  background: #fafafa;
+  border-radius: 6px;
+}
+
+.registration-closed {
+  text-align: center;
+  padding: 120px 20px;
+  font-size: 1.2rem;
+  color: #888;
+}
+
+.loading-text {
+  text-align: center;
+  margin-top: 100px;
+  font-size: 1.1rem;
+  color: #777;
+}
+
+@media (max-width: 768px) {
+  .registration-page {
+    margin: 60px 16px;
+    padding: 1.5rem;
+  }
+
+  .event-title {
+    font-size: 1.5rem;
+  }
+}

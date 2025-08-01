@@ -1,0 +1,193 @@
+/* --- Global Styles & Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Login Page Container --- */
+.admin-login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f1f5f9; /* Light gray background for a soft look */
+}
+
+/* --- Login Card --- */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  padding: 48px 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05), 0 5px 10px rgba(0, 0, 0, 0.02);
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Card Header --- */
+.login-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.login-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 8px 0;
+}
+
+.login-header p {
+  font-size: 16px;
+  color: #64748b;
+  margin: 0;
+}
+
+/* --- Form Elements --- */
+.login-form .form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #334155;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper .input-icon {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  pointer-events: none; /* Make icon non-interactive */
+}
+
+.input-wrapper input {
+  width: 100%;
+  height: 50px;
+  padding: 0 50px 0 50px; /* Padding: Top/Bottom | Right (for toggle) | Left (for icon) */
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #1e293b;
+  background-color: #f8fafc;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-wrapper input:focus {
+  outline: none;
+  border-color: #4cc9f0; /* Use accent color from your dashboard */
+  box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.2);
+}
+
+.input-wrapper input::placeholder {
+  color: #94a3b8;
+}
+
+/* --- Password Toggle Icon Button --- */
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #94a3b8;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+}
+
+.password-toggle:hover {
+  color: #334155;
+}
+
+/* --- Form Actions (Forgot Password) --- */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 24px;
+}
+
+.forgot-password-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: #4cc9f0; /* Use accent color */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgot-password-link:hover {
+  color: #3a8fb7;
+  text-decoration: underline;
+}
+
+/* --- Main Login Button --- */
+.login-button {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  background-color: #4cc9f0; /* Use accent color */
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.login-button:hover:not(:disabled) {
+  background-color: #3a8fb7;
+  box-shadow: 0 7px 15px rgba(76, 201, 240, 0.3);
+  transform: translateY(-2px);
+}
+
+.login-button:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(76, 201, 240, 0.2);
+}
+
+.login-button:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* --- Error Message --- */
+.error-message {
+  padding: 14px;
+  margin-bottom: 20px;
+  background-color: #fee2e2;
+  border: 1px solid #fca5a5;
+  color: #b91c1c;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* You can keep your .dashboard-* styles below this line for other pages */

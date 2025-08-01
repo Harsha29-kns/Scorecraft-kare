@@ -1,0 +1,151 @@
+/* --- App Layout --- */
+.app-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr; /* Sidebar width and main content */
+  height: 100vh;
+  background-color: #f8fafc; /* A light background for the content area */
+}
+
+/* --- Sidebar Styles --- */
+.sidebar {
+  background-color: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 0.5rem 1.5rem 0.5rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.sidebar-header .logo-icon {
+  font-size: 1.75rem;
+  color: #4cc9f0;
+}
+
+.sidebar-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+
+/* --- Navigation List --- */
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: none;
+  background-color: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-item .nav-icon {
+  font-size: 1.25rem;
+  color: #64748b;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-item .nav-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #334155;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-item:hover {
+  background-color: #f1f5f9;
+}
+
+.nav-item.active {
+  background-color: #e0f7ff; /* A light blue active state */
+  border-left: 4px solid #4cc9f0;
+  padding-left: calc(1rem - 4px); /* Adjust padding for the border */
+}
+
+.nav-item.active .nav-icon,
+.nav-item.active .nav-label {
+  color: #0b7994; /* Darker text for active state */
+  font-weight: 600;
+}
+
+/* --- Sidebar Footer (Logout) --- */
+.sidebar-footer {
+  margin-top: auto; /* Pushes footer to the bottom */
+}
+
+.logout-button:hover {
+  background-color: #fee2e2; /* Light red on hover for destructive action */
+}
+
+.logout-button:hover .nav-icon,
+.logout-button:hover .nav-label {
+  color: #b91c1c; /* Red text on hover */
+}
+
+/* --- Main Content Area --- */
+.main-content {
+  overflow-y: auto; /* Allows content to scroll independently */
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky; /* Makes header stick to top of content area */
+  top: 0;
+  z-index: 10;
+}
+
+.content-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 500;
+  color: #475569;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #4cc9f0;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.content-body {
+  /* This is where the ManageCoreTeam, etc. components will render */
+  /* The components themselves already have padding from our previous styling */
+  padding: 2rem 0;
+}

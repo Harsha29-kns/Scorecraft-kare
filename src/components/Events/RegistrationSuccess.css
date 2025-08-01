@@ -1,0 +1,137 @@
+/* --- Success Page Container --- */
+.registration-success-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  padding: 2rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* --- Success Card --- */
+.success-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  max-width: 550px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05), 0 5px 10px rgba(0, 0, 0, 0.02);
+  border: 1px solid #e2e8f0;
+  animation: fadeInScale 0.5s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Animated Success Icon --- */
+.success-icon-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.success-icon {
+  font-size: 5rem;
+  color: #22c55e; /* Green-500 */
+  animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* --- Text Styles --- */
+.success-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 1rem 0;
+}
+
+.success-message {
+  font-size: 1.1rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.success-message strong {
+  color: #0f172a;
+}
+
+/* --- WhatsApp Section --- */
+.whatsapp-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #f1f5f9;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.whatsapp-section h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+}
+
+.whatsapp-section p {
+  color: #475569;
+  margin: 0 0 1.5rem 0;
+}
+
+.whatsapp-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1.75rem;
+  background-color: #25D366;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.whatsapp-button:hover {
+  background-color: #1DAE56;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+/* --- Back Link --- */
+.back-link-wrapper {
+  margin-top: 2.5rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #64748b;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+.back-link:hover {
+  color: #1e293b;
+}
