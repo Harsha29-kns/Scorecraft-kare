@@ -44,8 +44,8 @@ export const imageUploader = {
 };
 
 
-const getAllFromCollection = async (collectionName) => {
-  const q = query(collection(db, collectionName), orderBy('name', 'asc')); // Assuming you want to order by title
+const getAllFromCollection = async (collectionName, orderByField = 'name') => {
+  const q = query(collection(db, collectionName), orderBy(orderByField, 'asc'));
   const querySnapshot = await getDocs(q);
   return querySnapshot.docs.map(d => ({ id: d.id, ...d.data() }));
 };
@@ -53,21 +53,21 @@ const getAllFromCollection = async (collectionName) => {
 
 
 export const coreTeam = {
-  getAll: () => getAllFromCollection('core_team'),
+  getAll: () => getAllFromCollection('core_team','name'),
   create: (memberData) => addDoc(collection(db, 'core_team'), memberData),
   update: (id, updates) => updateDoc(doc(db, 'core_team', id), updates),
   delete: (id) => deleteDoc(doc(db, 'core_team', id)),
 };
 
 export const mentors = {
-  getAll: () => getAllFromCollection('mentors'),
+  getAll: () => getAllFromCollection('mentors', 'name'),
   create: (mentorData) => addDoc(collection(db, 'mentors'), mentorData),
   update: (id, updates) => updateDoc(doc(db, 'mentors', id), updates),
   delete: (id) => deleteDoc(doc(db, 'mentors', id)),
 };
 
 export const events = {
-  getAll: () => getAllFromCollection('events'),
+  getAll: () => getAllFromCollection('events','title'),
   getUpcoming: async () => {
     const q = query(collection(db, 'events'), where('endTime', '>=', new Date().toISOString()), orderBy('endTime', 'asc'));
     const querySnapshot = await getDocs(q);
