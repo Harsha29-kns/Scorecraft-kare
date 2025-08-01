@@ -56,3 +56,5 @@ vercel.json
 *.bak
 *.tmp
 *.orig
+
+.vercel

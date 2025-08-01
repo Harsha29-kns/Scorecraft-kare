@@ -38,7 +38,7 @@
 .card-back {
   transform: rotateY(180deg); /* Positions the back of the card correctly */
   justify-content: center;
-  background: linear-gradient(to top right, #1a1a2e, #2c3e50);
+  background: linear-gradient(to top right, #1f1fff, #2c3e50);
   color: white;
 }
 
